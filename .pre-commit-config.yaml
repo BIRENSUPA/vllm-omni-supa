@@ -1,0 +1,44 @@
+default_stages: [commit, manual]
+
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.7
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v2.3.1
+    hooks:
+      - id: mypy
+        exclude: '^docs/(vllm_omni_supa/source|sphinx/source)/conf\.py$'
+        additional_dependencies:
+          - types-setuptools
+          - types-requests
+
+  - repo: https://github.com/crate-ci/typos
+    rev: v1.50.1
+    hooks:
+      - id: typos
+        args: [--force-exclude]
+
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.23.2
+    hooks:
+      - id: markdownlint-cli2
+        language_version: lts
+        args: [--fix]
+        # Merge request templates are fragments, not standalone documents.
+        exclude: ^\.gitlab/merge_request_templates/
+
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.11.0.1-1 # v0.11.0.1
+    hooks:
+      - id: shellcheck
+        args: ["-s", "bash", "--format=gcc", "-e", "SC2155", "-e", "SC2086", "-e", "SC2035", "-e", "SC2034", "-e", "SC2001", "-e", "SC2046"]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-json

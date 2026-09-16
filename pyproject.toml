@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=77.0.3,<81.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vllm-omni-supa"
+dynamic = ["version"]
+description = "Biren SUPA platform bridge for vLLM-Omni"
+requires-python = ">=3.10"
+dependencies = [
+    "vllm-omni==0.27.0rc1",
+]
+
+[project.entry-points."vllm_omni.platform_plugins"]
+biren_supa = "vllm_omni_supa:register_omni_platform"
+
+[project.entry-points."vllm.general_plugins"]
+biren_omni_patch = "vllm_omni_supa:register_patch"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["vllm_omni_supa*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "setup.PACKAGE_VERSION"}
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+exclude = ["dist", "*.egg-info"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+python_version = "3.10"
+check_untyped_defs = true
+disallow_untyped_defs = false
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+ignore_missing_imports = true
+exclude = '(^dist/|^build/|^.*\.egg-info/|^docs/(vllm_omni_supa/source|sphinx/source)/conf\.py$)'

@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+logs/
+.vscode/
+!.vscode/settings.json
+!.vscode/extensions.json
+*.mp4
+.mypy_cache/
+.ruff_cache/
+.venv/

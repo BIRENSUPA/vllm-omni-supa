@@ -1,0 +1,28 @@
+# 单仓
+repoType: main #仓库类型，默认main主仓。适于一个仓库出一个软件包， 以及多仓联合出一个软件包(如umd)的唯一主仓br_besu。
+otherRepos: [] # 指定仓库依赖得副仓（即其他仓得源码仓，没有的话保持默认为空）
+needSetEnv: true  # 编译打包过程中是否需要设置BIREN_HOME env
+primaryElfName: libsupa-runtime.so # 用于记录代表本模块版本信息的so或bin可执行程序. 此项为示例，请按模块实际填写。 
+buildDeps:
+  biren:  # 编译依赖的biren软件栈上游模块包名。此项为示例，请按模块实际填写。 
+    - brcc
+  third_party: []
+buildParams: {} # 此参数为保留字段，用于未来进一步开发使用
+productProject:  # 编译产物
+  debOrRpm: []
+  whl: []
+  tarGz: #(包形态，在这里填写了说明执行完 build.sh 后会有  supa-rt 和 supa 得 deb/rpm 包生成)
+   - suinfer # 此项为示例，请按模块实际填写。 
+  storage: ${src}/build
+productTest: # 测试产物
+  tarGz: #在这里填写了说明执行完 build.sh 后会有  supa-test 和 supa 得 deb/rpm 包生成)    
+    - suinfe-test # 此项为示例，请按模块实际填写。 
+  storage: ${src}/build
+productSymbol:  #添加symblol 得产物用于debug,
+  tarGz: [] # tar.gz 产物前缀
+  storage: null # 编译symbol包存放位置
+buildResoure: #编译此模块所需资源
+  reqCpu: 8
+  lmtCpu: 48
+  reqMem: 8Gi
+  lmtMem: 24Gi

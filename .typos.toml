@@ -1,0 +1,11 @@
+[default.extend-identifiers]
+# Existing build-system configuration key.
+buildResoure = "buildResoure"
+
+[type.sh.extend-words]
+# wget -nd means --no-directories.
+nd = "nd"
+
+[default.extend-words]
+PN = "PN"
+Resoure = "Resoure"
