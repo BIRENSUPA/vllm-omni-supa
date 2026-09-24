@@ -1,4 +1,4 @@
-# Copyright (C) 2025-2026 Shanghai Biren Technology Co., Ltd.
+# Copyright (C) 2020-2026 Shanghai Biren Technology Co., Ltd.
 """SUPA CPU-first patches for vLLM-Omni diffusion loading."""
 
 from __future__ import annotations

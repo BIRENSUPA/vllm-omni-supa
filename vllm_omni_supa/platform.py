@@ -1,4 +1,4 @@
-# Copyright (C) 2025-2026 Shanghai Biren Technology Co., Ltd.
+# Copyright (C) 2020-2026 Shanghai Biren Technology Co., Ltd.
 """Biren SUPA implementation of the vLLM-Omni platform contract.
 
 The SUPA backend intentionally reuses vLLM-Omni's CUDA-like worker and

@@ -69,9 +69,12 @@ python3 -m pip install --no-deps -e . --no-build-isolation  # 开发环境
 ```bash
 sudo apt update
 sudo apt install pre-commit -y
+# 也可以通过 python3 -m pip install pre-commit>=4.6.2 安装
 pre-commit install  # 安装 Git hook
 pre-commit clean && pre-commit run --all-files  # 初始化并执行全量检查
 ```
+
+**注意：**版本太老的pre-commit可能会报错，建议更新到`pre-commit>=4.6.2`，可以通过`hash -r && pre-commit --version`检查版本。
 
 ## 文档编译
 

@@ -21,8 +21,6 @@ biren_omni_patch = "vllm_omni_supa:register_patch"
 where = ["."]
 include = ["vllm_omni_supa*"]
 
-[tool.setuptools.dynamic]
-version = {attr = "setup.PACKAGE_VERSION"}
 
 [tool.ruff]
 target-version = "py310"

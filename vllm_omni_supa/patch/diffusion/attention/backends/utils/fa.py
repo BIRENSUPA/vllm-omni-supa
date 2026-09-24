@@ -1,4 +1,4 @@
-# Copyright (C) 2025-2026 Shanghai Biren Technology Co., Ltd.
+# Copyright (C) 2020-2026 Shanghai Biren Technology Co., Ltd.
 """Wire Omni's standard FlashAttention backend to BR200 kernels."""
 
 from __future__ import annotations

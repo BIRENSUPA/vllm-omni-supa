@@ -1,4 +1,4 @@
-# Copyright (C) 2025-2026 Shanghai Biren Technology Co., Ltd.
+# Copyright (C) 2020-2026 Shanghai Biren Technology Co., Ltd.
 import os
 import subprocess
 from datetime import datetime, timezone
@@ -11,8 +11,18 @@ ROOT_DIR = os.path.abspath(os.path.dirname(__file__))
 def get_build_metadata() -> str:
     """Return build metadata in commit-count.build-id.revision.timestamp format."""
     try:
-        commit_count = subprocess.check_output(["git", "rev-list", "--count", "HEAD"], cwd=ROOT_DIR, text=True, stderr=subprocess.DEVNULL).strip()
-        git_revision = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT_DIR, text=True, stderr=subprocess.DEVNULL).strip()
+        commit_count = subprocess.check_output(
+            ["git", "rev-list", "--count", "HEAD"],
+            cwd=ROOT_DIR,
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
+        git_revision = subprocess.check_output(
+            ["git", "rev-parse", "--short", "HEAD"],
+            cwd=ROOT_DIR,
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
     except (OSError, subprocess.CalledProcessError):
         commit_count, git_revision = "0", "unknown"
     build_id = os.environ.get("BUILD_ID", "0")
