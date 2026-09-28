@@ -1,13 +1,13 @@
 # vLLM-Omni-SUPA
 
-vLLM-Omni-SUPA 是面向壁仞 BR200/SUPA 硬件的 vLLM-Omni 平台插件，提供平台注册、运行时兼容补丁以及 SUPA 后端集成，支持在线服务和离线推理。
+vLLM-Omni-SUPA 是面向壁仞 BR200 硬件的 [vLLM-Omni](https://github.com/vllm-project/vllm-omni) 平台插件，提供平台注册、运行时兼容补丁以及 SUPA 后端集成，支持在线服务和离线推理。
 
 ## 系统要求
 
 - Ubuntu 22.04、Ubuntu 24.04 或兼容 Linux
 - Python 3.10+
 - BR2XX 硬件和 BIRENSUPA SDK
-- 已安装匹配版本的 vLLM、vLLM-Omni、vLLM-SUPA 及 PyTorch SUPA 运行时
+- 已安装匹配版本的 vLLM、vLLM-Omni、[vLLM-SUPA](https://github.com/BIRENSUPA/vllm-supa)、[TorchSUPA](https://github.com/BIRENSUPA/torch-supa)
 - 使用 Docker 时需要 Docker 20.10.7+
 
 版本统一定义在 [`upstream_version.txt`](upstream_version.txt)：
@@ -26,7 +26,7 @@ TORCH_VERSION=2.12.0
 
 ### Docker 镜像
 
-使用预装 vLLM-SUPA、TorchSUPA 及运行时依赖的镜像。镜像发布情况以交付说明为准。
+使用预装 vLLM-SUPA、TorchSUPA 及运行时依赖的镜像。(镜像发布情况以交付说明为准)
 
 ### Wheel 安装
 
@@ -62,19 +62,6 @@ python3 -m pip install --no-deps -e . --no-build-isolation  # 开发环境
 
 安装后插件会通过入口自动加载。启动 vLLM-Omni 时，日志中应出现 `OmniPlatform plugin biren_supa is activated`。
 
-## 代码贡献
-
-代码库配置了 pre-commit 检查。提交代码前，请先安装 pre-commit，以符合仓库代码规范：
-
-```bash
-sudo apt update
-sudo apt install pre-commit -y
-# 也可以通过 python3 -m pip install pre-commit>=4.6.2 安装
-pre-commit install  # 安装 Git hook
-pre-commit clean && pre-commit run --all-files  # 初始化并执行全量检查
-```
-
-**注意：**版本太老的pre-commit可能会报错，建议更新到`pre-commit>=4.6.2`，可以通过`hash -r && pre-commit --version`检查版本。
 
 ## 文档编译
 
@@ -95,7 +82,7 @@ sudo apt-get install -y latexmk texlive-xetex texlive-lang-chinese
 make latexpdf  # PDF 输出目录：build/latex/
 ```
 
-更多内容请参阅 [vLLM-Omni 文档](https://vllm-omni.readthedocs.io/) 和 `docs/` 目录。
+更多内容请参阅 [vLLM-Omni 文档](https://vllm-omni.readthedocs.io/) 和 [docs](./docs/) 目录。
 
 ## 许可证
 
